@@ -40,7 +40,7 @@ values
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Which of these teams has never won a championship?', 1, CURRENT_TIMESTAMP());
+ (2, 'Which of these teams has never won a championship?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
@@ -50,22 +50,22 @@ values
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Which legendary head coach is the Super Bowl trophy named after?', 1, CURRENT_TIMESTAMP());
+ (3, 'Which legendary head coach is the Super Bowl trophy named after?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Which country hosted the 2014 World Cup?', 1, CURRENT_TIMESTAMP());
+ (2, 'Which country hosted the 2014 World Cup?', 1, CURRENT_TIMESTAMP());
  
  insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Which Big 4 team has the most championship wins with 27?', 1, CURRENT_TIMESTAMP());
+ (3, 'Which Big 4 team has the most championship wins with 27?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Who was the first person inducted into the WWE Hall of Fame?', 1, CURRENT_TIMESTAMP());
+ (2, 'Who was the first person inducted into the WWE Hall of Fame?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
@@ -75,28 +75,28 @@ values
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Which of these football terms is not used to describe a score?', 1, CURRENT_TIMESTAMP());
+ (3, 'Which of these football terms is not used to describe a score?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'The 1992 US Men's Olympic team was given what nickname?', 1, CURRENT_TIMESTAMP());
+ (2, 'The 1992 US Men''s Olympic team was given what nickname?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Which position is marked as '1' on an official scorecard?', 1, CURRENT_TIMESTAMP());
+ (3, 'Which position is marked as ''1'' on an official scorecard?', 1, CURRENT_TIMESTAMP());
  
 
  insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'How many periods are there in a typical ice hockey game?', 1, CURRENT_TIMESTAMP());
+ (2, 'How many periods are there in a typical ice hockey game?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'What color jacket is given to the winner of the Masters Tournament?', 1, CURRENT_TIMESTAMP());
+ (3, 'What color jacket is given to the winner of the Masters Tournament?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
@@ -106,17 +106,17 @@ values
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'What is the official term for delivering the ball to the batsman?', 1, CURRENT_TIMESTAMP());
+ (2, 'What is the official term for delivering the ball to the batsman?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Which country has won the most Rugby Union World Cups?', 1, CURRENT_TIMESTAMP());
+ (2, 'Which country has won the most Rugby Union World Cups?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Who is the only NASCAR driver to ever win 200 races?', 1, CURRENT_TIMESTAMP());
+ (3, 'Who is the only NASCAR driver to ever win 200 races?', 1, CURRENT_TIMESTAMP());
  
 
  insert into questions 
@@ -132,7 +132,7 @@ values
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Which school holds the record for most consecutive NCAA Men's Basketball titles won with 7?', 1, CURRENT_TIMESTAMP());
+ (3, 'Which school holds the record for most consecutive NCAA Men''s Basketball titles won with 7?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
@@ -142,12 +142,6 @@ values
 
  
  
- 
- 
- 
- 
- -------------     QuestionChoices    --------------
-
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
@@ -655,9 +649,6 @@ values
 
 
 
-----------------------------
-
-
 ALTER TABLE questions
 ADD FOREIGN KEY (site_id) REFERENCES websites(id);
  
@@ -671,35 +662,7 @@ ADD FOREIGN KEY (question_id) REFERENCES questions(id);
  
    
 ALTER TABLE trxanswers
-ADD FOREIGN KEY (trxId) REFERENCES trxquestions(id);
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ADD FOREIGN KEY (trx_Id) REFERENCES trxquestions(id);
  
  
  
