@@ -7,8 +7,20 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.insticator.backend.model.TrxQuestion;
 
+/** 
+ * Repository of TrxQuestions table
+ */
 public interface TrxQuestionRepository extends JpaRepository<TrxQuestion, Long>  {
 
+	/**
+	 * get a next Question id using previous answer data by website and user id
+	 * get a list of question id which rarely asked
+	 * 
+	 * @param  String userId
+	 * @param  Long siteId
+	 * @return List<Long> 
+	 * 
+	 */
 	@Query(value = "SELECT t1.qid FROM (SELECT id as qid from questions WHERE site_id = ?2 ) t1 " + 
 			"LEFT JOIN  " + 
 			"(SELECT question_id as qid, COUNT(1) as cnt " + 

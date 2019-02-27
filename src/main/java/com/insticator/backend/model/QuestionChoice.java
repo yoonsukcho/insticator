@@ -20,6 +20,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * @author yoons
+ * questionchoices table model
  *
  */
 

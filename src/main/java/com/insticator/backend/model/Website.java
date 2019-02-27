@@ -15,6 +15,11 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+/**
+ * @author yoons
+ * Websites table model
+ *
+ */
 @Entity
 @Table(name="Websites")
 @EntityListeners(AuditingEntityListener.class)

@@ -20,6 +20,10 @@ import com.insticator.backend.service.QuestionService;
 import com.insticator.backend.service.TrxAnswerService;
 import com.insticator.backend.service.TrxQuestionService;
 
+/** 
+ * Main controller of process question
+ */
+
 @Controller
 @RequestMapping("/")
 public class QuestionController {
@@ -27,20 +31,28 @@ public class QuestionController {
 	//Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
 	@Autowired
-	QuestionService questionService;
+	QuestionService questionService;   // table questions handling
 
 	@Autowired
-	QuestionChoiceService questionChoiceService;
+	QuestionChoiceService questionChoiceService;   // table questionChoices handling
 
 	@Autowired
-	TrxQuestionService trxQuestionService;
+	TrxQuestionService trxQuestionService;   // table rxQuestions handling
 
 	@Autowired
-	TrxAnswerService trxAnswerService;
+	TrxAnswerService trxAnswerService;   // table trxAnswers handling
 
 	@Autowired
-	QuestionAttachmentService questionAttachmentService;
+	QuestionAttachmentService questionAttachmentService;   // table questionAttachments handling
 
+	/**
+	 * get a initial question depends on Website and user
+	 * 
+	 * @param  HttpServletRequest request
+	 * @return redirect page name 
+	 * 
+	 */
+	
 	@GetMapping("/")
 	public String getQuestion(HttpServletRequest request) {
 		List<Long> ids = trxQuestionService.findLowestNumAnswer("testUser", 1L);
@@ -54,6 +66,15 @@ public class QuestionController {
 		return "index";
 	}
 	
+	/**
+	 * get a next question depends on Website and user on result screen 
+	 * 
+	 * @param  Long siteId
+	 * @param  String userId
+	 * @param  HttpServletRequest request
+	 * @return redirect page name 
+	 * 
+	 */	
 	@PostMapping("/next")
 	public String getNextQuestion(@RequestParam Long siteId,
 								  @RequestParam String userId,
@@ -70,7 +91,17 @@ public class QuestionController {
 		request.setAttribute("lastSiteId", siteId);		
 		return "index";
 	}	
-	
+
+	/**
+	 * submit a answer and show the result screen and the right answer 
+	 * 
+	 * @param  TrxQuestion trx
+	 * @param  Long answer
+	 * @param  String rightAnswer
+	 * @param  HttpServletRequest request
+	 * @return redirect page name 
+	 * 
+	 */	
 	@PostMapping("/submit-answer")
 	public String saveTask( @ModelAttribute TrxQuestion trx, 
 							@RequestParam Long answer,

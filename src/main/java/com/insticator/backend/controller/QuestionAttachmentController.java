@@ -11,5 +11,5 @@ import com.insticator.backend.service.QuestionAttachmentService;
 public class QuestionAttachmentController {
 	
 	@Autowired
-	QuestionAttachmentService questionAttachmentDAO;
+	QuestionAttachmentService questionAttachmentService;
 }

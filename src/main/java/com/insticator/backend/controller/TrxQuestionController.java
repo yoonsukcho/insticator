@@ -10,6 +10,6 @@ import com.insticator.backend.service.TrxQuestionService;
 @RequestMapping("/")
 public class TrxQuestionController {
 
-		@Autowired
-		TrxQuestionService trxQuestionService;
+	@Autowired
+	TrxQuestionService trxQuestionService;
 }

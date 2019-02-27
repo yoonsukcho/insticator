@@ -3,6 +3,9 @@ package com.insticator.backend;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/** 
+ * Execute class having main method
+ */
 @SpringBootApplication
 public class Application {
 

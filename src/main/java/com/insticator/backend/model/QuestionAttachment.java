@@ -19,6 +19,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Table(name="questionattachments")
 @EntityListeners(AuditingEntityListener.class)
 
+/**
+ * @author yoons
+ * questionAttachments table model
+ *
+ */
 public class QuestionAttachment {
 
 	@Id

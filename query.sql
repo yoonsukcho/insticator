@@ -733,7 +733,8 @@ VALUES ('US Okymoic team', '/lib/img/q010.jpg', 1, CURRENT_TIMESTAMP(), 10);
  
  
  
- 
+CREATE INDEX idx01 
+ON trxquestions (site_id, user_id);
  
  
  
