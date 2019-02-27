@@ -30,7 +30,7 @@ Instruction
     spring.datasource.password = yourPassword
     
    
-5. query.sql execute (MySQL (8.0) and MariaDB (5.6.26) tested)
+5. execute query.sql  (MySQL (8.0) and MariaDB (5.6.26) tested)
 6. open project using 'Spring Tool Suite' : 'backend' folder which unzippd in 3.
 7. Right click on 'backend' project, select 'Run As' - 'Maven Build' (backend:compile)
 8. Right click on '/src/main/java/com.insticator.backend.Application.java', select 'Run As' - 'Java Application'
