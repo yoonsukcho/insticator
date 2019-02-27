@@ -22,9 +22,13 @@ Instruction
    data source change:
    
    ex)
+   
     spring.datasource.url = jdbc:mysql://localhost:3306/insticator?useSSL=false
+    
     spring.datasource.username = root
+    
     spring.datasource.password = yourPassword
+    
    
 5. query.sql execute (MySQL (8.0) and MariaDB (5.6.26) tested)
 6. open project using 'Spring Tool Suite' : 'backend' folder which unzippd in 3.
