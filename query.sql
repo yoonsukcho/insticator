@@ -1,4 +1,67 @@
+create database insticator;
+
+
 USE insticator;
+
+
+CREATE TABLE `questionattachments` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`file_desc` VARCHAR(255) NOT NULL,
+	`file_path` VARCHAR(255) NOT NULL,
+	`idx` BIGINT(20) NULL DEFAULT NULL,
+	`modified_at` DATETIME NULL DEFAULT NULL,
+	`question_id` BIGINT(20) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `questionchoices` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`content` VARCHAR(255) NOT NULL,
+	`idx` BIGINT(20) NULL DEFAULT NULL,
+	`is_correct` BIT(1) NOT NULL,
+	`modified_at` DATETIME NULL DEFAULT NULL,
+	`question_id` BIGINT(20) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `questions` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`content` VARCHAR(255) NOT NULL,
+	`modified_at` DATETIME NULL DEFAULT NULL,
+	`site_id` BIGINT(20) NULL DEFAULT NULL,
+	`type` INT(11) NOT NULL,
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `trxanswers` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`choice_id` BIGINT(20) NULL DEFAULT NULL,
+	`modified_at` DATETIME NULL DEFAULT NULL,
+	`trx_id` BIGINT(20) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `trxquestions` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`is_correct` BIT(1) NOT NULL,
+	`modified_at` DATETIME NULL DEFAULT NULL,
+	`question_id` BIGINT(20) NULL DEFAULT NULL,
+	`site_id` BIGINT(20) NULL DEFAULT NULL,
+	`user_id` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `websites` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(255) NOT NULL,
+	`is_active` BIT(1) NOT NULL,
+	`modified_at` DATETIME NULL DEFAULT NULL,
+	`name` VARCHAR(255) NOT NULL,
+	`phone` VARCHAR(255) NOT NULL,
+	`url` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`)
+);
+
 
 insert into websites 
 (name, url, phone, email, is_active, modified_at) 
@@ -36,12 +99,12 @@ values
  insert into questions 
  (site_id, content, type, modified_at)
  values
- (1, 'Which player holds the record for most consecutive games played?', 1, CURRENT_TIMESTAMP());
+ (1, 'Which MLB player holds the record for most consecutive games played?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (2, 'Which of these teams has never won a championship?', 1, CURRENT_TIMESTAMP());
+ (2, 'Which of these NBA teams has never won a championship?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
@@ -86,7 +149,7 @@ values
   insert into questions 
  (site_id, content, type, modified_at)
  values
- (3, 'Which position is marked as ''1'' on an official scorecard?', 1, CURRENT_TIMESTAMP());
+ (3, 'Which baseball position is marked as ''1'' on an official scorecard?', 1, CURRENT_TIMESTAMP());
  
 
  insert into questions 
@@ -124,11 +187,6 @@ values
  (site_id, content, type, modified_at)
  values
  (1, 'Which Olympic athlete has won a combined total of 28 medals?', 1, CURRENT_TIMESTAMP());
- 
-  insert into questions 
- (site_id, content, type, modified_at)
- values
- (1, 'Which player holds the record for most consecutive games played?', 1, CURRENT_TIMESTAMP());
  
   insert into questions 
  (site_id, content, type, modified_at)
@@ -363,290 +421,266 @@ values
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(10, 1, 'Wayne Rooney', 0, CURRENT_TIMESTAMP());
+(10, 1, 'Super Group', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(10, 2, 'Frank Lampard', 0, CURRENT_TIMESTAMP());
+(10, 2, 'Hoop Legends', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(10, 3, 'Robbie Fowler', 0, CURRENT_TIMESTAMP());
+(10, 3, 'Court Stars', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(10, 4, 'Alan Shearer', 1, CURRENT_TIMESTAMP());
+(10, 4, 'Dream Team', 1, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(11, 1, 'Super Group', 0, CURRENT_TIMESTAMP());
+(11, 1, 'Pitcher', 1, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(11, 2, 'Hoop Legends', 0, CURRENT_TIMESTAMP());
+(11, 2, 'Catcher', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(11, 3, 'Court Stars', 0, CURRENT_TIMESTAMP());
+(11, 3, 'Left Field', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(11, 4, 'Dream Team', 1, CURRENT_TIMESTAMP());
+(11, 4, 'First Base', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(12, 1, 'Pitcher', 1, CURRENT_TIMESTAMP());
+(12, 1, '2', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(12, 2, 'Catcher', 0, CURRENT_TIMESTAMP());
+(12, 2, '3', 1, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(12, 3, 'Left Field', 0, CURRENT_TIMESTAMP());
+(12, 3, '1', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(12, 4, 'First Base', 0, CURRENT_TIMESTAMP());
+(12, 4, '4', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(13, 1, '2', 0, CURRENT_TIMESTAMP());
+(13, 1, 'Brown', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(13, 2, '3', 1, CURRENT_TIMESTAMP());
+(13, 2, 'Green', 1, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(13, 3, '1', 0, CURRENT_TIMESTAMP());
+(13, 3, 'Gold', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(13, 4, '4', 0, CURRENT_TIMESTAMP());
+(13, 4, 'Black', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(14, 1, 'Brown', 0, CURRENT_TIMESTAMP());
+(14, 1, 'Wimbledon', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(14, 2, 'Green', 1, CURRENT_TIMESTAMP());
+(14, 2, 'Australian Open', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(14, 3, 'Gold', 0, CURRENT_TIMESTAMP());
+(14, 3, 'US Open', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(14, 4, 'Black', 0, CURRENT_TIMESTAMP());
+(14, 4, 'French Open', 1, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(15, 1, 'Wimbledon', 0, CURRENT_TIMESTAMP());
+(15, 1, 'Hurling', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(15, 2, 'Australian Open', 0, CURRENT_TIMESTAMP());
+(15, 2, 'Bowling', 1, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(15, 3, 'US Open', 0, CURRENT_TIMESTAMP());
+(15, 3, 'Pitching', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(15, 4, 'French Open', 1, CURRENT_TIMESTAMP());
+(15, 4, 'Flinging', 0, CURRENT_TIMESTAMP());
+
+
+insert into QuestionChoices 
+(question_id, idx, content, is_Correct, modified_at)
+values
+(16, 1, 'England', 0, CURRENT_TIMESTAMP());
+
+
+insert into QuestionChoices 
+(question_id, idx, content, is_Correct, modified_at)
+values
+(16, 2, 'France', 0, CURRENT_TIMESTAMP());
+
+
+insert into QuestionChoices 
+(question_id, idx, content, is_Correct, modified_at)
+values
+(16, 3, 'New Zealand', 1, CURRENT_TIMESTAMP());
+
+
+insert into QuestionChoices 
+(question_id, idx, content, is_Correct, modified_at)
+values
+(16, 4, 'Australia', 0, CURRENT_TIMESTAMP());
+
+
+insert into QuestionChoices 
+(question_id, idx, content, is_Correct, modified_at)
+values
+(17, 1, 'Jimmie Johnson', 0, CURRENT_TIMESTAMP());
+
+
+insert into QuestionChoices 
+(question_id, idx, content, is_Correct, modified_at)
+values
+(17, 2, 'Richard Petty', 0, CURRENT_TIMESTAMP());
+
+
+insert into QuestionChoices 
+(question_id, idx, content, is_Correct, modified_at)
+values
+(17, 3, 'Dale Earnhardt', 1, CURRENT_TIMESTAMP());
+
+
+insert into QuestionChoices 
+(question_id, idx, content, is_Correct, modified_at)
+values
+(17, 4, 'Jeff Gordon', 0, CURRENT_TIMESTAMP());
 
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(17, 1, 'England', 0, CURRENT_TIMESTAMP());
+(18, 1, 'Usain Bolt', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(17, 2, 'France', 0, CURRENT_TIMESTAMP());
+(18, 2, 'Mark Spitz', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(17, 3, 'New Zealand', 1, CURRENT_TIMESTAMP());
+(18, 3, 'Michael Phelps', 1, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(17, 4, 'Australia', 0, CURRENT_TIMESTAMP());
+(18, 4, 'Carl Lewis', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(18, 1, 'Jimmie Johnson', 0, CURRENT_TIMESTAMP());
+(19, 1, 'Kentucky', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(18, 2, 'Richard Petty', 0, CURRENT_TIMESTAMP());
+(19, 2, 'Indiana', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(18, 3, 'Dale Earnhardt', 1, CURRENT_TIMESTAMP());
+(19, 3, 'UCLA', 1, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(18, 4, 'Jeff Gordon', 0, CURRENT_TIMESTAMP());
+(19, 4, 'North Carolina', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(16, 1, 'Hurling', 0, CURRENT_TIMESTAMP());
+(20, 1, '2', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(16, 2, 'Bowling', 1, CURRENT_TIMESTAMP());
+(20, 2, '4', 1, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(16, 3, 'Pitching', 0, CURRENT_TIMESTAMP());
+(20, 3, '5', 0, CURRENT_TIMESTAMP());
 
 
 insert into QuestionChoices 
 (question_id, idx, content, is_Correct, modified_at)
 values
-(16, 4, 'Flinging', 0, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(19, 1, 'Usain Bolt', 0, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(19, 2, 'Mark Spitz', 0, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(19, 3, 'Michael Phelps', 1, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(19, 4, 'Carl Lewis', 0, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(20, 1, 'Kentucky', 0, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(20, 2, 'Indiana', 0, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(20, 3, 'UCLA', 1, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(20, 4, 'North Carolina', 0, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(21, 1, '2', 0, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(21, 2, '4', 1, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(21, 3, '5', 0, CURRENT_TIMESTAMP());
-
-
-insert into QuestionChoices 
-(question_id, idx, content, is_Correct, modified_at)
-values
-(21, 4, '3', 0, CURRENT_TIMESTAMP());
+(20, 4, '3', 0, CURRENT_TIMESTAMP());
 
 
 
@@ -664,6 +698,62 @@ ADD FOREIGN KEY (question_id) REFERENCES questions(id);
    
 ALTER TABLE trxanswers
 ADD FOREIGN KEY (trx_Id) REFERENCES trxquestions(id);
+ 
+ 
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('MLB Player', '/lib/img/q001.jpg', 1, CURRENT_TIMESTAMP(), 1);
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('NBA Game', '/lib/img/q002.jpg', 1, CURRENT_TIMESTAMP(), 2);
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('NHL Player', '/lib/img/q003.jpg', 1, CURRENT_TIMESTAMP(), 3);
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('NFL Coaches', '/lib/img/q004.jpg', 1, CURRENT_TIMESTAMP(), 4);
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('Worldcup', '/lib/img/q005.jpg', 1, CURRENT_TIMESTAMP(), 5);
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('Big 4', '/lib/img/q006.jpg', 1, CURRENT_TIMESTAMP(), 6);
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('WWE Hall of Fame', '/lib/img/q007.jpg', 1, CURRENT_TIMESTAMP(), 7);
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('Duke Blue Devils', '/lib/img/q008.jpg', 1, CURRENT_TIMESTAMP(), 8);
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('Football terms', '/lib/img/q009.jpg', 1, CURRENT_TIMESTAMP(), 9);
+ 
+INSERT INTO questionattachments (file_desc, file_path, idx, modified_at, question_id) 
+VALUES ('US Okymoic team', '/lib/img/q010.jpg', 1, CURRENT_TIMESTAMP(), 10);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
