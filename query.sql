@@ -1,3 +1,4 @@
+USE insticator;
 
 insert into websites 
 (name, url, phone, email, is_active, modified_at) 
