@@ -19,7 +19,8 @@ Instruction
 3. unzip (change the folder name: 'insticator-master' -> 'backend')
 4. edit '/src/main/resources/application.properties' file
 
-   data source change: 
+   data source change:
+   
    ex)
     spring.datasource.url = jdbc:mysql://localhost:3306/insticator?useSSL=false
     spring.datasource.username = root
