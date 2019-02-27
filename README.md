@@ -1,7 +1,7 @@
 # insticator
 
 Software
-1. MySQL (8.0) od MariaDB (5.6.26)
+1. MySQL (8.0) or MariaDB (5.6.26)
 2. Spring Tool Suite 3.9.7.
 3. Chrome 72
 4. jdk 1.8
