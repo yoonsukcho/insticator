@@ -8,5 +8,5 @@ import com.insticator.backend.model.QuestionAttachment;
 
 public interface QuestionAttachmentRepository  extends JpaRepository<QuestionAttachment, Long>  {
 
-	//public List<QuestionAttachment> findAllById(Long siteId);
+	public List<QuestionAttachment> findAllById(Long questionId);
 }

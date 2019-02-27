@@ -2,8 +2,6 @@ package com.insticator.backend.controller;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.insticator.backend.model.TrxAnswer;
 import com.insticator.backend.model.TrxQuestion;
+import com.insticator.backend.service.QuestionAttachmentService;
 import com.insticator.backend.service.QuestionChoiceService;
 import com.insticator.backend.service.QuestionService;
 import com.insticator.backend.service.TrxAnswerService;
@@ -39,27 +38,33 @@ public class QuestionController {
 	@Autowired
 	TrxAnswerService trxAnswerService;
 
+	@Autowired
+	QuestionAttachmentService questionAttachmentService;
+
 	@GetMapping("/")
 	public String getQuestion(HttpServletRequest request) {
-		List<Long> ids = trxQuestionService.findLowestNumAnswer("temp", 1L);
+		List<Long> ids = trxQuestionService.findLowestNumAnswer("testUser", 1L);
 
-		Long id = Long.valueOf(""+ids.get(0));
+		Long id = (ids.size() == 0)? 1: Long.valueOf(""+ids.get(0));
 
 		request.setAttribute("question", questionService.getOne(id));
 		request.setAttribute("choices", questionChoiceService.findAllById(id));
+		request.setAttribute("imgs", questionAttachmentService.findAllById(id));
 		
 		return "index";
 	}
 	
-	@GetMapping("/next")
+	@PostMapping("/next")
 	public String getNextQuestion(@RequestParam Long siteId,
 								  @RequestParam String userId,
 								  HttpServletRequest request) {
 
 		List<Long> ids = trxQuestionService.findLowestNumAnswer(userId, siteId);
-		Long id = Long.valueOf(""+ids.get(0));
+		
+		Long id = (ids.size() == 0)? 1: Long.valueOf(""+ids.get(0));
 		request.setAttribute("question", questionService.getOne(id));
 		request.setAttribute("choices", questionChoiceService.findAllById(id));
+		request.setAttribute("imgs", questionAttachmentService.findAllById(id));
 		request.setAttribute("questionId", id);
 		request.setAttribute("lastUserId", userId);
 		request.setAttribute("lastSiteId", siteId);		
@@ -91,17 +96,12 @@ public class QuestionController {
 		Long id = trx.getQuestionId();
 		request.setAttribute("question", questionService.getOne(id));
 		request.setAttribute("choices", questionChoiceService.findAllById(id));
+		request.setAttribute("imgs", questionAttachmentService.findAllById(id));
 		request.setAttribute("lastUserId", trx.getUserId());
 		request.setAttribute("lastSiteId", trx.getSiteId());
 		
 		return "index";
 	}	
-	
-	private int getRandom(int i) {
-		Random rand = new Random();
-		int n = rand.nextInt(i);
-		return n + 1;
-	}
 	
 	
 }

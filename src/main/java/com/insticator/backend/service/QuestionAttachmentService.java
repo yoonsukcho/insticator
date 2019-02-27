@@ -13,11 +13,10 @@ public class QuestionAttachmentService {
 	
 	@Autowired
 	QuestionAttachmentRepository questionAttachmentRepository;
-
-	/*
-	 * public List<QuestionAttachment> findAllById(Long siteId) { return
-	 * questionAttachmentRepository.findAllById(siteId); }
-	 */
+	
+	public List<QuestionAttachment> findAllById(Long questionId) { 
+		return questionAttachmentRepository.findAllById(questionId); 
+	}
 	
 	
 }

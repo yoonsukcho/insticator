@@ -9,7 +9,7 @@ import com.insticator.backend.model.TrxQuestion;
 
 public interface TrxQuestionRepository extends JpaRepository<TrxQuestion, Long>  {
 
-	@Query(value = "SELECT t1.qid FROM (SELECT id as qid from questions WHERE site_id = '2' ) t1 " + 
+	@Query(value = "SELECT t1.qid FROM (SELECT id as qid from questions WHERE site_id = ?2 ) t1 " + 
 			"LEFT JOIN  " + 
 			"(SELECT question_id as qid, COUNT(1) as cnt " + 
 			" FROM trxquestions " + 
