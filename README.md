@@ -20,7 +20,6 @@ Instruction
 4. edit '/src/main/resources/application.properties' file
    data source change: 
    ex)
-    ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
     spring.datasource.url = jdbc:mysql://localhost:3306/insticator?useSSL=false
     spring.datasource.username = root
     spring.datasource.password = yourPassword
