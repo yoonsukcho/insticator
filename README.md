@@ -39,7 +39,7 @@ Instruction
 
 Further Considerations
 
-- Database is designed considering multi select questions and other count of choices
+- Database is designed considering multi select questions and other count of choices (noe implemented yet)
 - Currently, the same user IDs in the same site are targeted for the same frequency, but the logic for bringing the same frequency issues in a more random way is needed.
 - Need a more hierarchical folder structure design for each task subdivision
 - Depending on the functionality of the frontend, a more functional supplement is needed.
