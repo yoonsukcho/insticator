@@ -3,10 +3,11 @@
 Software
 1. MySQL (8.0) or MariaDB (5.6.26)
 2. Spring Tool Suite 3.9.7.
-3. Chrome 72
-4. jdk 1.8
-5. Bootstrap(included)
-6. jQuery (included)
+3. Tomcat v9.0
+4. Chrome 72
+5. jdk 1.8
+6. Bootstrap(included)
+7. jQuery (included)
 
 
 GitHub URL: https://github.com/yoonsukcho/insticator
